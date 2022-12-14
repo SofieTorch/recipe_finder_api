@@ -25,8 +25,8 @@ class Recipe:
             'title': f'#{self.id} {self.name.capitalize()}',
             'description': f'Requires {len(self.ingredients)} ingredients',
             'footer': f'{len(self.steps)} steps',
-            "openUrlAction": {
-                "url": "https://example.com"
+            'openUrlAction': {
+                'url': f'https://37fa-186-2-74-33.sa.ngrok.io/{self.id}'
             }
         }
 
@@ -36,7 +36,28 @@ class Recipe:
             'title': f'Recipe #{self.id}'
         }
 
+    def to_json(self):
+        return {
+            'id': str(self.id),
+            'name': self.name,
+            'tags': self.tags,
+            'ingredients': self.ingredients,
+            'steps': self.steps
+        }
+
+
+    def _list_to_string(self, input_list):
+        res = ''
+        for element in input_list:
+            res += f'* {element.capitalize()}' + '\n'
+        return res
+
 
     def __str__(self):
-     return f'#{self.id} {self.name}'
+        return f'''
+#{self.id} - {self.name}
+Ingredients:
+{self._list_to_string(self.ingredients)}
+Steps:
+{self._list_to_string(self.steps)}'''
 
