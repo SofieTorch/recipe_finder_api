@@ -26,7 +26,7 @@ class Recipe:
             'description': f'Requires {len(self.ingredients)} ingredients',
             'footer': f'{len(self.steps)} steps',
             'openUrlAction': {
-                'url': f'https://37fa-186-2-74-33.sa.ngrok.io/{self.id}'
+                'url': f'https://c52f-186-2-3-178.sa.ngrok.io/{self.id}'
             }
         }
 
